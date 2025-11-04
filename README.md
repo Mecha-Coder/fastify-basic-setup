@@ -1,6 +1,6 @@
 # Basic fastify setup
 
-Packages installed
+Packages needed
 ```bash
 ├── @fastify/static@8.3.0
 ├── @fastify/swagger-ui@5.2.3
@@ -12,6 +12,7 @@ Packages installed
 ---
 
 **Fastify’s JSON Schema**
+
 Contract that defines your input and out output structure
 - For input : Validate incoming request before reaching the handler
 - For output: Validate respond before sending out (optional, but good practice)
