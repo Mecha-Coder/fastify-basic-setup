@@ -1,19 +1,21 @@
-import fastify from 'fastify';
-import itemRoute from './routes/items.js';
+import fastify, { PORT } from "./config.js"
+import items_route from './routes/routes.js';
 
-const app = fastify({ logger: true });
-const PORT = 5000;
+//===========================================================
+// Routes
 
-// Register plugin - itemRoute
-app.register(itemRoute, { prefix: "/items" })
+fastify.register(items_route, { prefix: "/items" })
 
-// Index route
-app.get("/", async (req, res) => {
-  res.code(211).send({ hello: 'world' });
+fastify.get("/", (req, res) => {
+  res.send({ index: 'Basic setup for Fastify' });
 })
 
+//===========================================================
 // Start server
-app.listen({ port: PORT }, (err) => {
+
+await fastify.ready();
+fastify.listen({ port: PORT }, (err) => {
   if (err) throw err
   console.log(`Server running at http://localhost:${PORT}`);
-  })
+})
+
